@@ -1,13 +1,22 @@
-// ================================
-// TUGAS: ORANG 1
-// File ini: routing / daftar halaman
-// ================================
-// TODO: import createRouter, createWebHistory dari 'vue-router'
-// TODO: import komponen-komponen view (Home, ProductDetail, Cart, About)
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
+import ProductDetail from '../views/ProductDetail.vue'
+import Cart from '../views/Cart.vue'
+import About from '../views/About.vue'
 
-// TODO: definisikan array routes, contoh:
-// { path: '/', name: 'home', component: Home }
+const routes = [
+  { path: '/', name: 'home', component: Home },
+  { path: '/produk/:id', name: 'product-detail', component: ProductDetail, props: true },
+  { path: '/keranjang', name: 'cart', component: Cart },
+  { path: '/tentang', name: 'about', component: About },
+]
 
-// TODO: buat router dengan createRouter({ history: createWebHistory(), routes })
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+  scrollBehavior() {
+    return { top: 0 }
+  },
+})
 
-// TODO: export default router
+export default router

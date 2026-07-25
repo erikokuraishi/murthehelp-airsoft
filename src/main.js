@@ -1,8 +1,12 @@
-// ================================
-// TUGAS: ORANG 1 (kerjakan di awal bareng-bareng, file ini kecil)
-// File ini: nyalakan aplikasi Vue
-// ================================
-// TODO: import createApp dari 'vue', createPinia dari 'pinia', App.vue, dan router
-// TODO: buat app dengan createApp(App)
-// TODO: app.use(pinia) dan app.use(router)
-// TODO: app.mount('#app')
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+import router from './router'
+import './assets/main.css'
+
+const app = createApp(App)
+
+app.use(createPinia())
+app.use(router)
+
+app.mount('#app')

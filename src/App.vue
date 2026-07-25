@@ -1,16 +1,18 @@
-<!-- ================================
-     TUGAS: ORANG 1
-     File ini: layout utama (nav + halaman + footer)
-     ================================ -->
 <template>
-  <!-- TODO: taruh NavBar di sini -->
-  <!-- TODO: taruh <router-view /> di sini -->
-  <!-- TODO: taruh Footer di sini -->
+  <NavBar />
+  <main>
+    <router-view />
+  </main>
+  <AppFooter />
 </template>
 
 <script setup>
-// TODO: import komponen NavBar dan Footer di sini
+import NavBar from './components/NavBar.vue'
+import AppFooter from './components/Footer.vue'
 </script>
 
 <style scoped>
+main {
+  min-height: 70vh;
+}
 </style>
