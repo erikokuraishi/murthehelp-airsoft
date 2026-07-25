@@ -31,22 +31,32 @@ const formattedPrice = computed(() =>
 <style scoped>
 .card {
   display: block;
-  background: #fff;
-  border: 1px solid #d8cfb2;
-  border-radius: 4px;
+  background: var(--surface-1, #1c1e15);
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+  border-top: 3px solid var(--od-green-bright, #7c9a4a);
+  border-radius: 6px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(32, 31, 28, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4);
 }
 
 .image-wrap {
   position: relative;
+  background: #0f100b;
+}
+
+.image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
 }
 
 .image-wrap img {
@@ -54,24 +64,32 @@ const formattedPrice = computed(() =>
   height: 180px;
   object-fit: cover;
   display: block;
+  transition: transform 0.35s ease;
+}
+
+.card:hover .image-wrap img {
+  transform: scale(1.05);
 }
 
 .category-tag {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #414d2a;
-  color: #ece5d3;
+  z-index: 1;
+  background: linear-gradient(135deg, var(--od-green-bright, #7c9a4a), var(--od-green, #5a6b3a));
+  color: #14150f;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 3px 10px;
   border-radius: 2px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 .card-body {
   padding: 14px 16px 18px;
+  border-top: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
 }
 
 .card-body h3 {
@@ -79,22 +97,25 @@ const formattedPrice = computed(() =>
   margin: 0 0 6px;
   text-transform: none;
   letter-spacing: normal;
+  color: var(--charcoal, #ece7d8);
 }
 
 .price {
-  color: #ff6a2b;
-  font-weight: 600;
+  color: #ff8a45;
+  font-weight: 700;
   margin: 0 0 4px;
 }
 
 .stock {
   font-size: 0.8rem;
-  color: #6b6a5f;
+  color: var(--tan, #cbb98d);
+  opacity: 0.75;
   margin: 0;
 }
 
 .stock.low {
-  color: #b5482f;
+  color: var(--alert-red, #e5484d);
+  opacity: 1;
   font-weight: 600;
 }
 </style>

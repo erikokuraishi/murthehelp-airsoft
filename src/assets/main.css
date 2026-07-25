@@ -1,10 +1,27 @@
 :root {
-  --od-green: #414d2a;      /* olive drab, warna utama */
-  --od-green-dark: #2b3320; /* olive gelap, buat nav/header */
-  --tan: #cabb92;           /* tan/khaki, buat teks di background gelap */
-  --tan-light: #ece5d3;     /* background halaman */
-  --charcoal: #201f1c;      /* teks utama, footer */
-  --blaze: #ff6a2b;         /* aksen oranye buat tombol/CTA */
+  --od-green: #5a6b3a;      /* olive terang, buat tag/aksen di atas bg gelap */
+  --od-green-dark: #14150f; /* hampir hitam, buat nav/footer/hero */
+  --tan: #cbb98d;           /* tan/khaki, teks sekunder */
+  --tan-light: #1c1e15;     /* SEKARANG dipakai sebagai warna card/permukaan gelap */
+  --charcoal: #ece7d8;      /* SEKARANG dipakai sebagai warna teks utama (terang) */
+  --blaze: #ff7a29;         /* aksen oranye, lebih cerah biar kontras */
+
+  /* --- token turunan buat nambah kedalaman & variasi warna, tanpa ganti makna token di atas --- */
+  --od-green-deep: #3d4a28;
+  --od-green-bright: #7c9a4a;
+  --brass: #d9a441;         /* aksen kuning kuningan/brass, buat variasi kedua selain oranye */
+  --brass-deep: #a97b26;
+  --signal-blue: #46c2d9;   /* aksen biru "HUD" dingin buat kontraskan sama oranye/hijau */
+  --signal-blue-deep: #2790a3;
+  --alert-red: #e5484d;     /* dipakai buat stok abis/error, lebih tegas dari sebelumnya */
+
+  --surface-1: #1c1e15;
+  --surface-2: #232619;
+  --surface-3: #2a2e1e;
+  --border-soft: rgba(203, 185, 141, 0.16);
+  --blaze-soft: rgba(255, 122, 41, 0.14);
+  --signal-soft: rgba(70, 194, 217, 0.16);
+  --shadow-deep: 0 18px 40px rgba(0, 0, 0, 0.45);
 
   --font-display: 'Oswald', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -20,7 +37,20 @@ html, body {
 }
 
 body {
-  background: var(--tan-light);
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(90, 107, 58, 0.05) 0px,
+      rgba(90, 107, 58, 0.05) 2px,
+      transparent 2px,
+      transparent 90px
+    ),
+    radial-gradient(circle at 12% 8%, rgba(124, 154, 74, 0.2), transparent 42%),
+    radial-gradient(circle at 88% 6%, rgba(70, 194, 217, 0.08), transparent 34%),
+    radial-gradient(circle at 82% 82%, rgba(255, 122, 41, 0.12), transparent 40%),
+    radial-gradient(circle at 6% 90%, rgba(217, 164, 65, 0.08), transparent 36%),
+    #15170f;
+  background-attachment: fixed;
   color: var(--charcoal);
   font-family: var(--font-body);
   line-height: 1.5;
@@ -30,8 +60,24 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--od-green-dark);
+  color: var(--tan);
   margin: 0;
+}
+
+h2 {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blaze), var(--brass));
+  border-radius: 2px;
 }
 
 a {
@@ -39,9 +85,18 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--signal-blue);
+}
+
 button {
   font-family: var(--font-body);
   cursor: pointer;
+}
+
+::selection {
+  background: var(--blaze);
+  color: var(--od-green-dark);
 }
 
 .container {
@@ -57,15 +112,32 @@ button {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--tan-light);
-  background: var(--od-green);
+  color: var(--od-green-dark);
+  background: linear-gradient(135deg, var(--od-green-bright), var(--od-green));
   padding: 3px 10px;
   border-radius: 2px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+/* garis pangkat 3 warna, dipakai buat aksen di hero/footer biar nggak monoton satu warna */
+.rank-stripe {
+  height: 4px;
+  width: 64px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--blaze) 0%,
+    var(--blaze) 32%,
+    var(--brass) 32%,
+    var(--brass) 64%,
+    var(--signal-blue) 64%,
+    var(--signal-blue) 100%
+  );
 }
 
 .btn-primary {
-  background: var(--blaze);
-  color: #fff;
+  background: linear-gradient(135deg, var(--blaze), var(--brass-deep));
+  color: #15170f;
   border: none;
   padding: 10px 20px;
   border-radius: 3px;
@@ -76,5 +148,5 @@ button {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 14px rgba(255, 122, 41, 0.35);
 }

@@ -84,22 +84,26 @@ onMounted(() => {
 
 <style scoped>
 .product-detail {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 32px 24px 56px;
 }
 
 .detail-wrapper {
   display: flex;
-  gap: 32px;
+  gap: 36px;
   flex-wrap: wrap;
 }
 
 .product-image {
-  width: 350px;
+  width: 380px;
   max-width: 100%;
+  height: 380px;
   border-radius: 8px;
   object-fit: cover;
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+  box-shadow: var(--shadow-deep, 0 18px 40px rgba(0, 0, 0, 0.45));
+  background: var(--surface-1, #1c1e15);
 }
 
 .product-info {
@@ -107,51 +111,101 @@ onMounted(() => {
   min-width: 250px;
 }
 
+.product-info h1 {
+  margin-bottom: 6px;
+}
+
 .category {
-  color: #888;
-  font-size: 0.9rem;
+  color: var(--brass, #d9a441);
+  opacity: 0.9;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #2c7a2c;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ff8a45;
+  margin: 8px 0 14px;
+}
+
+.description {
+  color: var(--charcoal, #ece7d8);
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .specs {
   list-style: none;
   padding: 0;
+  margin: 10px 0 18px;
 }
 
 .specs li {
-  padding: 4px 0;
-  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+  color: var(--charcoal, #ece7d8);
+}
+
+.specs li strong {
+  color: var(--signal-blue, #46c2d9);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.stock {
+  color: var(--tan, #cbb98d);
+  opacity: 0.8;
+  font-size: 0.9rem;
 }
 
 .add-to-cart {
-  margin-top: 20px;
+  margin-top: 22px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.add-to-cart label {
+  color: var(--tan, #cbb98d);
+  font-size: 0.9rem;
 }
 
 .add-to-cart input {
-  width: 60px;
-  padding: 6px;
+  width: 64px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+  background: var(--surface-1, #1c1e15);
+  color: var(--charcoal, #ece7d8);
 }
 
 .add-to-cart button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--blaze, #ff7a29), #e8621a);
+  color: #15170f;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.add-to-cart button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 122, 41, 0.35);
 }
 
 .success-message {
-  color: #2c7a2c;
-  margin-top: 10px;
+  color: #8bc34a;
+  margin-top: 12px;
+  font-weight: 600;
 }
 
 .error {
-  color: #b00020;
+  color: var(--alert-red, #e5484d);
 }
 </style>

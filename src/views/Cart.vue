@@ -67,7 +67,6 @@ function handleQtyChange(id, event) {
 }
 
 function handleCheckout() {
-  // Simulasi checkout saja, tidak ada payment sungguhan
   checkoutDone.value = true
   cartStore.clearCart()
 
@@ -79,23 +78,41 @@ function handleCheckout() {
 
 <style scoped>
 .cart-page {
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 32px 24px 56px;
+}
+
+.cart-page h1 {
+  margin-bottom: 20px;
 }
 
 .empty {
-  color: #888;
+  color: var(--tan, #cbb98d);
+  opacity: 0.7;
   text-align: center;
-  padding: 40px 0;
+  padding: 48px 0;
+  border: 1px dashed var(--border-soft, rgba(203, 185, 141, 0.16));
+  border-radius: 6px;
+}
+
+.cart-list {
+  background: var(--surface-1, #1c1e15);
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+  border-radius: 6px;
+  padding: 4px 16px;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+}
+
+.cart-item:last-child {
+  border-bottom: none;
 }
 
 .item-image {
@@ -103,6 +120,7 @@ function handleCheckout() {
   height: 70px;
   object-fit: cover;
   border-radius: 6px;
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
 }
 
 .item-info {
@@ -110,59 +128,87 @@ function handleCheckout() {
 }
 
 .item-name {
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--charcoal, #ece7d8);
 }
 
 .item-price {
-  color: #666;
+  color: var(--tan, #cbb98d);
+  opacity: 0.75;
   font-size: 0.9rem;
 }
 
 .qty-input {
   width: 60px;
-  padding: 6px;
+  padding: 7px;
+  border-radius: 4px;
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
+  background: var(--surface-2, #232619);
+  color: var(--charcoal, #ece7d8);
 }
 
 .item-subtotal {
   width: 130px;
   text-align: right;
-  font-weight: bold;
+  font-weight: 700;
+  color: #ff8a45;
 }
 
 .remove-btn {
-  padding: 6px 12px;
+  padding: 7px 14px;
   cursor: pointer;
-  background: #f5f5f5;
-  border: 1px solid #ddd;
+  background: transparent;
+  color: var(--tan, #cbb98d);
+  border: 1px solid var(--border-soft, rgba(203, 185, 141, 0.16));
   border-radius: 4px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.remove-btn:hover {
+  border-color: var(--alert-red, #e5484d);
+  color: var(--alert-red, #e5484d);
 }
 
 .cart-summary {
   margin-top: 24px;
-  padding-top: 16px;
-  border-top: 2px solid #333;
+  padding-top: 18px;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, #ff6a2b, #d9a441, #46c2d9) 1;
   text-align: right;
 }
 
+.total-items {
+  color: var(--tan, #cbb98d);
+  opacity: 0.8;
+}
+
 .total-price {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #2c7a2c;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff8a45;
 }
 
 .checkout-btn {
-  padding: 10px 24px;
+  padding: 11px 26px;
   font-size: 1rem;
   cursor: pointer;
-  background: #2c7a2c;
-  color: white;
+  background: linear-gradient(135deg, var(--signal-blue, #46c2d9), var(--signal-blue-deep, #2790a3));
+  color: #0d1b1e;
   border: none;
   border-radius: 6px;
-  margin-top: 10px;
+  margin-top: 12px;
+  font-weight: 700;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(70, 194, 217, 0.35);
 }
 
 .success-message {
-  color: #2c7a2c;
+  color: #8bc34a;
   margin-top: 10px;
+  font-weight: 600;
 }
 </style>
